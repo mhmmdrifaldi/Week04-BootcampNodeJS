@@ -5,7 +5,15 @@ import ChartItem from "./list/chartItem";
 function App() {
   return (
     <div>
-      <ChartItem/>
+      <div>
+        <ParentComponents/>
+      </div>
+      <div>
+        <EmployeeList/>
+      </div>
+      <div>
+        <ChartItem/>
+      </div>
     </div>
   );
 }
