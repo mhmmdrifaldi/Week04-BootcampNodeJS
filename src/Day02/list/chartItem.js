@@ -16,7 +16,7 @@ export default function ChartItem() {
     	setTotal(TotalHarga)
     const TotalQuantity = cart.reduce((jumlah, data)=> jumlah + data.qty, 0)
       setTotalQty(TotalQuantity)
-  })
+  }, [cart])
 
 	const tambahQty = (id) => {
     setCart(
