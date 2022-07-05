@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import ChartForm from '../../Day03/Form/ChartForm'
 import { doGetCart, doAddCart } from '../Redux/Action'
@@ -25,7 +25,7 @@ export default function CartListRedux() {
 	const onSubmit = (event) => {
 		event.preventDefault()
 		const payload = {
-			prodId: carts.length + 1,
+			prodId: 	carts.length + 1,
 			prodName: values.prodName,
 			qty: values.qty,
 			salary: values.salary,
