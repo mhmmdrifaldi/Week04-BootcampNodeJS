@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './Day04/App';
+import App from './Day05/App';
 import reportWebVitals from './reportWebVitals';
 import store from './Day04/Redux/Store'; // Untuk Day 04
+import StoreToolkit from './Day05/Toolkit/StoreToolkit'; // Untuk Day 05
 import { Provider } from 'react-redux';
 
 // Versi React
@@ -15,7 +16,7 @@ import { Provider } from 'react-redux';
 // );
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Provider store={StoreToolkit}>
     <React.StrictMode>
       <App/>
     </React.StrictMode>
