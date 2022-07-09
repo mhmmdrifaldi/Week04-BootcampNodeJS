@@ -10,7 +10,7 @@ import ProjAssign from "./View/ProjAssign";
 
 function App() {
   return (
-    <div padding-left="20px">
+    <div>
       <div>
         <Region/>
         <hr color="black"/>

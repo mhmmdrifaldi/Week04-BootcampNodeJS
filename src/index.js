@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './Day06/App';
+import App from './Day07/App';
 import reportWebVitals from './reportWebVitals';
 import store from './Day04/Redux/Store'; // Untuk Day 04
 import StoreToolkit from './Day05/Toolkit/StoreToolkit'; // Untuk Day 05
