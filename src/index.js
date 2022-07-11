@@ -6,14 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import store from './Day04/Redux/Store'; // Untuk Day 04
 import StoreToolkit from './Day05/Toolkit/StoreToolkit'; // Untuk Day 05
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom'
+import { HelmetProvider } from 'react-helmet-async'
+import Routes from './Day08/routes'
 
 // Versi React
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// const root = ReactDOM.createRoot(document.getElementById('root'));
+// root.render(
+//   <React.StrictMode>
+//     <App />
+//   </React.StrictMode>
+// );
 
 // Untuk Redux
 // ReactDOM.render(
@@ -24,6 +27,18 @@ root.render(
 //   </Provider>,
 //   document.getElementById('root')
 // );
+
+// Untuk Redux Saga
+ReactDOM.render(
+  <Provider store={StoreToolkit}>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </HelmetProvider>
+  </Provider>,
+  document.getElementById('root')
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
