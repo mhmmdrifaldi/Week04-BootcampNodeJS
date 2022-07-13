@@ -18,15 +18,34 @@ export default function Region() {
 					<thead>
 						<th>Region ID</th>
 						<th>Region Name</th>
+						<th>Country</th>
 					</thead>
 					<tbody>
 						{
-							region.map(reg => (
-								<tr key={reg.region_id}>
-									<td>{reg.region_id}</td>
-									<td>{reg.region_name}</td>
-								</tr>
-							))
+							region.map(reg => {
+								return (
+									<tr key={reg.region_id}>
+										<td>{reg.region_id}</td>
+										<td>{reg.region_name}</td>
+										<table>
+											<thead>
+												<th>Country ID</th>
+												<th>Country Name</th>
+											</thead>
+											<tbody>
+												{reg.countries.map(cty => {
+													return (
+														<tr key={cty.country_id}>
+															<td>{cty.country_id}</td>
+															<td>{cty.country_name}</td>
+														</tr>
+													)
+												})}
+											</tbody>
+										</table>
+									</tr>
+								)
+							})
 						}
 					</tbody>
 				</table>
