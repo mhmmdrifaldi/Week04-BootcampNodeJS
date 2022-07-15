@@ -11,7 +11,7 @@ export default function EmployeeAdd(props) {
     employeeAPI.findOne(props.id).then(data => {
       setEmployee(data)
     })
-  }, [])
+  }, [props.id])
   
 	const formik = useFormik({
     enableReinitialize: true,
