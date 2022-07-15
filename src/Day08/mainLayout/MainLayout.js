@@ -3,7 +3,9 @@ import { Outlet, Link } from 'react-router-dom'
 
 export default function MainLayout() {
 	const navigation = [
-    { name: 'Region', href: 'region', current: false }
+    { name: 'Region', href: 'region', current: false },
+    { name: 'Employee', href: 'employee', current: false },
+    { name: 'Baru', href: 'baru', current: false }
 	]
 
 	return (
