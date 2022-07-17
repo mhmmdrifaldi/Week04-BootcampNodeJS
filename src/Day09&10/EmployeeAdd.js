@@ -1,24 +1,10 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import employeeAPI from './employeeAPI'
-import * as Yup from 'yup'
 
 export default function EmployeeAdd(props) {
   const [previewImg, setPreviewImg] = useState();
   const [uploaded, setUploaded] = useState(false);
-
-  const validation = Yup.object().shape({
-    first_name: Yup.string().required("Wajib diisi"),
-    last_name: Yup.string().required("Wajib diisi"),
-    email: Yup.string().required('Wajib diisi'),
-    phone_number: Yup.number().required('Wajib diisi'),
-    hire_date: Yup.date().required('Wajib diisi'),
-    job_id: Yup.number().required('Wajib diisi'),
-    salary: Yup.number().required('Wajib diisi'),
-    manager_id: Yup.number().required('Wajib diisi'),
-    department_id: Yup.number().required('Wajib diisi'),
-    emp_profile: Yup.string().required('Wajib diisi'),
-  })
 
   const formik = useFormik({
   	initialValues: {
@@ -33,8 +19,6 @@ export default function EmployeeAdd(props) {
       department_id: 0,
       emp_profile: undefined
     },
-
-    validation: validation,
     	
 		onSubmit: async (values) => {
       let payload = new FormData();

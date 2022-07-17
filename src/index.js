@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Day07/App';
 import reportWebVitals from './reportWebVitals';
-import store from './Day04/Redux/Store'; // Untuk Day 04
+import store from './Day11/Redux-Saga/Store'; // Untuk Day 04
 import StoreToolkit from './Day05/Toolkit/StoreToolkit'; // Untuk Day 05
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom'
@@ -30,7 +30,7 @@ import Routes from './Day08/routes'
 
 // Untuk Redux Saga
 ReactDOM.render(
-  <Provider store={StoreToolkit}>
+  <Provider store={store}>
     <HelmetProvider>
       <BrowserRouter>
         <Routes />
