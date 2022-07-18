@@ -48,7 +48,7 @@ export default function EmployeeView() {
           :
           <>
             <div>
-              <h1 className='text-center mb-4 text-2xl font-bold'>LIST EMPLOYEES</h1>
+              <h1 className='text-center my-4 text-2xl font-bold'>LIST EMPLOYEES</h1>
             </div>
             <button 
               type="button" 
@@ -84,7 +84,7 @@ export default function EmployeeView() {
                         <td className="px-6 py-2">{emp.email}</td>
                         <td className="px-6 py-2">{emp.phone_number}</td>
                         <td className="px-6 py-2">{emp.hire_date}</td>
-                        <td className="px-6 py-2"><img crossOrigin='' src={config.domain + '/employee/file/' + emp.emp_profile}/></td>
+                        <td className="px-6 py-2">{emp.emp_profile === null ? <></> : <img crossOrigin='anonymous' src={config.domain+'/employee/file/'+emp.emp_profile}/>}</td>
                         <td className="px-6 py-2">
                         <td className='py-2'>
                           <button

@@ -31,7 +31,8 @@ export default function EmployeeAdd(props) {
       job_id: Yup.number().min(1).required(),
       salary: Yup.number().min(500).required(),
       manager_id: Yup.number().min(1).required(),
-      department_id: Yup.number().min(1).required()
+      department_id: Yup.number().min(1).required(),
+      emp_profile: Yup.string().required()
     }),
     
 		onSubmit: async (values) => {
@@ -91,7 +92,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="first_name"
         />
-        {formik.errors.first_name && <div className='mb-2 text-xs text-red-600'>{formik.errors.first_name}</div>}
+        {formik.touched.first_name && formik.errors.first_name ? <span className="mb-2 text-xs text-red-600">{formik.errors.first_name}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Last Name
@@ -107,7 +108,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="last_name"
         />
-        {formik.errors.last_name && <div className='mb-2 text-xs text-red-600'>{formik.errors.last_name}</div>}
+        {formik.touched.last_name && formik.errors.last_name ? <span className="mb-2 text-xs text-red-600">{formik.errors.last_name}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Email
@@ -123,7 +124,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="email"
         />
-        {formik.errors.email && <div className='mb-2 text-xs text-red-600'>{formik.errors.email}</div>}
+        {formik.touched.email && formik.errors.email ? <span className="mb-2 text-xs text-red-600">{formik.errors.email}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Phone Number
@@ -139,7 +140,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="phone_number"
         />
-        {formik.errors.phone_number && <div className='mb-2 text-xs text-red-600'>{formik.errors.phone_number}</div>}
+        {formik.touched.phone_number && formik.errors.phone_number ? <span className="mb-2 text-xs text-red-600">{formik.errors.phone_number}</span> : null}
       </div>
 			<div>
         <label class="my-1 block text-sm font-medium text-gray-700">Hire Date
@@ -155,7 +156,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="hire_date"
         />
-        {formik.errors.hire_date && <div className='mb-2 text-xs text-red-600'>{formik.errors.hire_date}</div>}
+        {formik.touched.hire_date && formik.errors.hire_date ? <span className="mb-2 text-xs text-red-600">{formik.errors.hire_date}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Job ID
@@ -171,7 +172,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="job_id"
         />
-        {formik.errors.job_id && <div className='mb-2 text-xs text-red-600'>{formik.errors.job_id}</div>}
+        {formik.touched.job_id && formik.errors.job_id ? <span className="mb-2 text-xs text-red-600">{formik.errors.job_id}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Salary
@@ -187,7 +188,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="salary"
         />
-        {formik.errors.salary && <div className='mb-2 text-xs text-red-600'>{formik.errors.salary}</div>}
+        {formik.touched.salary && formik.errors.salary ? <span className="mb-2 text-xs text-red-600">{formik.errors.salary}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Manager ID
@@ -203,7 +204,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="manager_id"
         />
-        {formik.errors.manager_id && <div className='mb-2 text-xs text-red-600'>{formik.errors.manager_id}</div>}
+        {formik.touched.manager_id && formik.errors.manager_id ? <span className="mb-2 text-xs text-red-600">{formik.errors.manager_id}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Department ID
@@ -219,7 +220,7 @@ export default function EmployeeAdd(props) {
           onBlur={formik.handleBlur}
           autoComplete="department_id"
         />
-        {formik.errors.department_id && <div className='mb-2 text-xs text-red-600'>{formik.errors.department_id}</div>}
+        {formik.touched.department_id && formik.errors.department_id ? <span className="mb-2 text-xs text-red-600">{formik.errors.department_id}</span> : null}
       </div>
       <div>
         <label class="my-1 block text-sm font-medium text-gray-700">Profile
@@ -247,12 +248,30 @@ export default function EmployeeAdd(props) {
                 <p class="pl-1">or drag and drop</p>
               </div>
               <p class="text-xs text-gray-500">PNG, JPG, GIF up to 10MB</p>
+              {formik.touched.emp_profile && formik.errors.emp_profile ? <span className="mb-2 text-xs text-red-600">{formik.errors.emp_profile}</span> : null}
             </div>
           </div>
       </div>
       <div className='m-1'>
-        <button type='submit' className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={formik.handleSubmit}> Simpan </button>
-        <button className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-red-500 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" onClick={() => props.setDisplay(false)}> Cancel </button>
+        <button
+          type='submit'
+          className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-indigo-500 hover:text-indigo-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          onClick={formik.handleSubmit}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          Simpan
+        </button>
+        <button
+          className="cursor-pointer inline-flex justify-center py-2 px-2 shadow-sm text-sm font-medium rounded-md text-red-500 hover:text-red-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+          onClick={() => props.setDisplay(false)}
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+          Cancel
+        </button>
       </div>
     </div>
   )
