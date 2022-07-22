@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
-import { GetEmployeeRequest,DelEmployeeRequest } from '../../Redux-Saga/Action/EmployeeAction'
+import { GetEmployeeRequest, DelEmployeeRequest } from '../../Redux-Saga/Action/EmployeeAction'
 import EmployeeAdd from './EmployeeAdd'
-import EmpionEdit from './EmployeeEdit'
+import EmployeeEdit from './EmployeeEdit'
 import config from '../../../Config/config'
 
-export default function EmployeeView() {
+export default function Employee() {
   const dispatch = useDispatch()
   const [display, setDisplay] = useState(false)
   const [displayEdit, setDisplayEdit] = useState(false)
@@ -19,7 +19,7 @@ export default function EmployeeView() {
 
   const onDelete = async (id) =>{
     dispatch(DelEmployeeRequest(id))
-    window.alert('Data Succesfully Deleted')
+    window.alert('Data Successfully Delete')
   }
   
 	const onClick = (empID) => {
@@ -28,11 +28,11 @@ export default function EmployeeView() {
   }
     
 	return (
-    <div>
+    <div className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
       <div className="relative overflow-x-auto -md sm:rounded-lg">
         {
           displayEdit ?
-            <EmpionEdit
+            <EmployeeEdit
               closeAdd={() => setDisplayEdit(false)}
               onRefresh={() => setRefresh(true)}
               id={id}

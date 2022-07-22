@@ -32,7 +32,7 @@ export default function EmployeeAdd(props) {
       salary: Yup.number().min(500).required(),
       manager_id: Yup.number().min(1).required(),
       department_id: Yup.number().min(1).required(),
-      emp_profile: Yup.string().required()
+      emp_profile: Yup.mixed().nullable().notRequired()
     }),
     
 		onSubmit: async (values) => {
@@ -74,7 +74,7 @@ export default function EmployeeAdd(props) {
   }
 
   return (
-    <div>
+    <div className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
       <div>
         <h1 className='text-center mb-4 text-2xl font-bold'>ADD EMPLOYEE</h1>
       </div>

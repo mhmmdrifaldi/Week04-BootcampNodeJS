@@ -15,8 +15,8 @@ export default function Region() {
   }
 
   return (
-    <div className="relative overflow-x-auto -md sm:rounded-lg">
-      <div>
+    <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+      <div className="relative overflow-x-auto -md sm:rounded-lg">
         <h1 className='text-center my-4 text-2xl font-bold'>LIST REGIONS</h1>
       </div>
       <button 

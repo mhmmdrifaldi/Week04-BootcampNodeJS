@@ -1,34 +1,38 @@
 import React, { useState, useEffect } from 'react'
 import { useFormik } from 'formik'
-import employeeAPI from '../../../Day09&10/employeeAPI'
+import { useDispatch, useSelector } from 'react-redux'
+import { GetOneEmployeeRequest, EditEmployeeRequest, EditNoEmployeeRequest } from '../../Redux-Saga/Action/EmployeeAction'
 import config from '../../../Config/config'
 import * as Yup from 'yup'
 
-export default function EmployeeAdd(props) {
-  const [employee, setEmployee] = useState([])
+export default function EmployeeEdit(props) {
+  const dispatch = useDispatch()
+  const { employee } = useSelector(state => state.employeeStated)
   const [previewImg, setPreviewImg] = useState();
   const [uploaded, setUploaded] = useState(false);
   
 	useEffect(() => {
-    employeeAPI.findOne(props.id).then(data => {
-      setEmployee(data)
-    })
-  }, [props.id])
+    dispatch(GetOneEmployeeRequest(props.id))
+  }, [])
+
+  useEffect(() => {
+    let img = `${config.domain + '/employee/file/' + employee.emp_profile}`
+    setPreviewImg(img)
+  }, [employee])
   
-	const formik = useFormik({
+  const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
-      employee_id: employee.employee_id,
-      first_name: employee.first_name,
-    	last_name: employee.last_name,
-      email: employee.email,
-      phone_number: employee.phone_number,
-			hire_date: employee.hire_date,
-      job_id: employee.job_id,
-      salary: employee.salary,
-      manager_id: employee.manager_id,
-      department_id: employee.department_id,
-      emp_profile: employee.emp_profile
+        first_name: employee.first_name,
+        last_name: employee.last_name,
+        email: employee.email,
+        phone_number: employee.phone_number,
+        hire_date: employee.hire_date,
+        job_id: employee.job_id,
+        salary: employee.salary,
+        manager_id: employee.manager_id,
+        department_id: employee.department_id,
+        emp_profile: employee.emp_profile
     },
 
     validationSchema: Yup.object({
@@ -44,25 +48,38 @@ export default function EmployeeAdd(props) {
     }),
 
     onSubmit: async (values) => {
-      let payload = new FormData();
-        payload.append('first_name', values.first_name)
-        payload.append('last_name', values.last_name)
-        payload.append('email', values.email)
-        payload.append('phone_number', values.phone_number)
-				payload.append('hire_date', values.hire_date)
-        payload.append('job_id', values.job_id)
-        payload.append('salary', values.salary)
-        payload.append('manager_id', values.manager_id)
-        payload.append('department_id', values.department_id)
-        payload.append('emp_profile', values.profile)
-        payload.append('employee_id', values.employee_id)
-
-        await employeeAPI.update(payload)
-          .then(() => {
-            props.closeAdd();
-            window.alert('Data Succesfully Edited')
-            props.onRefresh();
-          })
+      if (uploaded === true) {
+        let payload = new FormData();
+          payload.append('first_name', values.first_name)
+          payload.append('last_name', values.last_name)
+          payload.append('email', values.email)
+          payload.append('phone_number', values.phone_number)
+			  	payload.append('hire_date', values.hire_date)
+          payload.append('job_id', values.job_id)
+          payload.append('salary', values.salary)
+          payload.append('manager_id', values.manager_id)
+          payload.append('department_id', values.department_id)
+          payload.append('emp_profile', values.profile)
+          payload.append('employee_id', employee.employee_id)
+          dispatch(EditEmployeeRequest(payload))
+      } else {
+        const payload = {
+          first_name: values.first_name,
+          last_name: values.last_name,
+          email: values.email,
+          phone_number: values.phone_number,
+          hire_date: values.hire_date,
+          job_id: values.job_id,
+          salary: values.salary,
+          manager_id: values.manager_id,
+          department_id: values.department_id,
+          employee_id: employee.employee_id
+        };
+        dispatch(EditNoEmployeeRequest(payload))
+      }
+      props.closeAdd();
+      window.alert('Data Succesfully Edited')
+      props.onRefresh();
     }
   })
 
@@ -86,7 +103,7 @@ export default function EmployeeAdd(props) {
   }
     
 	return (
-    <div>
+    <div className='max-w-7xl mx-auto py-6 sm:px-6 lg:px-8'>
       <div>
         <h1 className='text-center mb-4 text-2xl font-bold'>EDIT EMPLOYEE</h1>
       </div>
@@ -248,7 +265,7 @@ export default function EmployeeAdd(props) {
                   </svg>
                 :
                 <>
-                  <img crossOrigin='anonymous' src={config.domain+'/employee/file/'+employee.emp_profile} alt='image' />
+                  <img crossOrigin='anonymous' src={previewImg} alt='image' />
                   <span class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500" onClick={onClearImage}>Remove</span>
                 </>
               }

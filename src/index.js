@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import Routes from './Day08/routes'
+import Routes2 from './Day08/routes2'
 
 // Versi React
 // const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -33,7 +34,7 @@ ReactDOM.render(
   <Provider store={store}>
     <HelmetProvider>
       <BrowserRouter>
-        <Routes />
+        <Routes2 />
       </BrowserRouter>
     </HelmetProvider>
   </Provider>,

@@ -1,5 +1,6 @@
-/* This example requires Tailwind CSS v2.0+ */
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 export default function Dashboard() {
   return (
     <>
@@ -10,6 +11,10 @@ export default function Dashboard() {
           </h1>
         </div>
       </div>
+      <Link className='flex justify-center' to='employee'>
+        <button className='cursor-pointer inline-flex justify-center py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-400'>Klik Disini Untuk Ke Halaman Employee
+        </button>
+      </Link>
     </>
   )
 }
