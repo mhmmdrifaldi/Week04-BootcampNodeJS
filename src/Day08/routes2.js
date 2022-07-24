@@ -4,6 +4,9 @@ import { Disclosure } from '@headlessui/react'
 import Dashboard from './mainLayout/Dashboard';
 import Region from '../Day11/ViewSaga/Region/Region'
 import Employee from '../Day11/ViewSaga/Employee/Employee';
+import ParentLayout from './mainLayout/ParentLayout';
+import ChildrenLayout1 from './mainLayout/ChildrenLayout1';
+import ChildrenLayout2 from './mainLayout/ChildrenLayout2';
 
 export default function Routes2() {
 	return (
@@ -46,9 +49,9 @@ export default function Routes2() {
 				<Route path="region" element={<Region />} />
 				<Route path="employee" element={<Employee />} />
 				{/* Contoh Penggunaan Children */}
-				<Route path="" element={''}>
-          <Route path="" element={''} />
-          <Route path="" element={''} />
+				<Route path="parent" element={<ParentLayout />}>
+          <Route path="children1" element={<ChildrenLayout1 />} />
+          <Route path="children2" element={<ChildrenLayout2 />} />
         </Route>
 			</Routes>
 		</>
